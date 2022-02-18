@@ -6,7 +6,7 @@ function Home() {
       <img
       className='home__image'
         src="https://m.media-amazon.com/images/I/516TM2qDJXL._SX1500_.jpg"
-        alt=""
+        alt="Amazon"
       />
     </div>
   );
