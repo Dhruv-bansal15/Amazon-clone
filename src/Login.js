@@ -2,28 +2,31 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 function Login() {
   const history = useNavigate();
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const login = (event) => {
     event.preventDefault();
-    auth.signInWithEmailAndPassword(email,password)
-    .then((auth)=> {
-      history("/");
-    })
-    .catch((e) => alert(e.message));
-  }
+    signInWithEmailAndPassword(auth, email, password)
+      .then((auth) => {
+        history("/");
+      })
+      .catch((e) => alert(e.message));
+  };
   const register = (event) => {
     event.preventDefault();
-    auth.createUserWithEmailAndPassword(email,password)
-    .then((auth)=> {
-      history("/");
-    })
-    .catch((e)=> alert(e.message))
-
-  }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((auth) => {
+        history("/");
+      })
+      .catch((e) => alert(e.message));
+  };
   return (
     <div className="login">
       <Link to="/">
