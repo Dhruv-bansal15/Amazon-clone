@@ -1,14 +1,5 @@
 export const initialState = {
-  basket: [
-    {
-      id: "12356489",
-      title: "Boat Rockerz 255 Pro",
-      price: 1399,
-      rating: 5,
-      image:
-        "https://images-eu.ssl-images-amazon.com/images/I/31PU4kWou+L._AC_SX184_.jpg",
-    },
-  ],
+  basket: [],
   user: null,
 };
 export const getBasketTotal = (basket) =>{
@@ -18,6 +9,11 @@ export const getBasketTotal = (basket) =>{
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "SET_USER" : 
+      return {
+        ...state,
+        user: action.user,
+      }
     case "ADD_TO_BASKET":
       return {
         ...state,
